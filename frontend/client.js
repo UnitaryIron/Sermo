@@ -1,8 +1,11 @@
 // client.js
 (() => {
-  const wsUrl = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+const wsUrl =
+  (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
     ? `ws://${location.hostname}:8080`
-    : (location.protocol === 'https:' ? `wss://${location.host}` : `ws://${location.host}`);
+    : (location.protocol === 'https:' 
+        ? `wss://cirlceup.onrender.com`
+        : `ws://cirlceup.onrender.com`);
 
   let ws;
   let clientId;
@@ -216,3 +219,4 @@
   connect();
 
 })();
+
