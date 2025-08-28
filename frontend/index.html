@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CircleUp - Group Chat</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="light-theme">
+    <div id="app" class="app">
+      <aside class="sidebar">
+        <div class="brand">CircleUp</div>
+        <div class="theme-switcher">
+          <select id="themeSelect">
+            <option value="light">Light Theme</option>
+            <option value="dark">Dark Theme</option>
+            <option value="forest">Forest Theme</option>
+            <option value="ocean">Ocean Theme</option>
+          </select>
+        </div>
+        <div class="user-setup">
+          <input id="username" placeholder="Your name" maxlength="32" />
+          <input id="room" placeholder="Room (default: main)" maxlength="64" />
+          <button id="joinBtn">Join Room</button>
+        </div>
+
+        <div class="room-info" id="roomInfo">
+          <div>Room: <span id="roomName"></span></div>
+          <div>Online:</div>
+          <ul id="usersList" class="users-list"></ul>
+        </div>
+        <div class="footer-light">Built with ❤️ by CircleUp</div>
+      </aside>
+
+      <section class="chat">
+        <header class="chat-header">
+          <div id="chatTitle">Not connected</div>
+          <div id="typingIndicator" class="typing"></div>
+        </header>
+
+        <main id="messages" class="messages">
+          <div class="msg in">
+            <div class="meta"><span class="user-status"></span> System</div>
+            <div class="text">
+              Welcome to CircleUp! Join a room to start chatting.
+            </div>
+            <div class="small">Just now</div>
+          </div>
+        </main>
+
+        <footer class="composer">
+          <input
+            id="messageInput"
+            placeholder="Type a message and press Enter"
+            autocomplete="off"
+            disabled
+          />
+          <button id="sendBtn" disabled>Send</button>
+        </footer>
+      </section>
+    </div>
+
+    <audio id="notificationSound" src="notification.mp3" preload="auto"></audio>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // DOM Elements
+        const themeSelect = document.getElementById("themeSelect");
+        const usernameInput = document.getElementById("username");
+        const roomInput = document.getElementById("room");
+        const joinBtn = document.getElementById("joinBtn");
+        const roomInfo = document.getElementById("roomInfo");
+        const roomName = document.getElementById("roomName");
+        const usersList = document.getElementById("usersList");
+        const chatTitle = document.getElementById("chatTitle");
+        const typingIndicator = document.getElementById("typingIndicator");
+        const messagesContainer = document.getElementById("messages");
+        const messageInput = document.getElementById("messageInput");
+        const sendBtn = document.getElementById("sendBtn");
+        const notificationSound = document.getElementById("notificationSound");
+
+        // State variables
+        let currentUser = "";
+        let currentRoom = "";
+        let isTyping = false;
+        let typingTimer = null;
+
+        // Theme switching functionality
+        themeSelect.addEventListener("change", function () {
+          const theme = this.value;
+          document.body.className = `${theme}-theme`;
+
+          // Save theme preference to localStorage
+          localStorage.setItem("circleup-theme", theme);
+        });
+
+        // Load saved theme from localStorage
+        const savedTheme = localStorage.getItem("circleup-theme") || "light";
+        themeSelect.value = savedTheme;
+        document.body.className = `${savedTheme}-theme`;
+
+        // Initialize app with saved theme
+        document.body.className = `${savedTheme}-theme`;
+      });
+    </script>
+    <script src="client.js"></script>
+  </body>
+</html>
