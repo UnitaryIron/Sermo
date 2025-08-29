@@ -385,6 +385,97 @@
         text-align: right;
       }
 
+      /* Icon Button Styling for Different Themes */
+.icon-btn {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    color: var(--text);
+}
+
+.icon-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Light Theme Icons */
+.light-theme .icon-btn {
+    color: #333333;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.light-theme .icon-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme Icons */
+.dark-theme .icon-btn {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Forest Theme Icons */
+.forest-theme .icon-btn {
+    color: #81c784;
+    background-color: rgba(129, 199, 132, 0.1);
+}
+
+.forest-theme .icon-btn:hover {
+    background-color: rgba(129, 199, 132, 0.2);
+}
+
+/* Ocean Theme Icons */
+.ocean-theme .icon-btn {
+    color: #1976d2;
+    background-color: rgba(25, 118, 210, 0.1);
+}
+
+.ocean-theme .icon-btn:hover {
+    background-color: rgba(25, 118, 210, 0.2);
+}
+
+/* Sidebar Header Icons Specific Styling */
+.sidebar-header .icon-btn {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+}
+
+/* Mobile Sidebar Toggle Button */
+#openSidebarBtn {
+    margin-right: 12px;
+    font-size: 1.2em;
+}
+
+/* Animation for Icons */
+.icon-btn i {
+    transition: transform 0.2s ease;
+}
+
+.icon-btn:active i {
+    transform: scale(0.9);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar-header .icon-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+}
+
       @media (max-width: 800px) {
         .app {
           flex-direction: column;
@@ -426,3 +517,64 @@
       #notificationSound {
         display: none;
       }
+
+      /* Sidebar hidden/visible states */
+.sidebar {
+  position: relative;
+  transition: transform var(--transition-speed) ease;
+}
+
+.sidebar.hidden {
+  transform: translateX(-110%);
+}
+
+/* Mobile drawer behavior */
+@media (max-width: 800px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 320px;
+    z-index: 1000;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 4px 0 20px var(--shadow);
+    transform: translateX(-110%); /* start hidden */
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* Overlay when sidebar is open */
+  .sidebar-overlay {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: none;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+}
+
+#openSidebarBtn, #closeSidebarBtn {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.sidebar {
+    transition: transform 0.3s ease;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar:not(.open) {
+    transform: translateX(-100%);
+}
