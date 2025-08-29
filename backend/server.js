@@ -115,3 +115,31 @@ wss.on('connection', (ws) => {
     ws.close();
   });
 });
+
+/* Express */
+const express = require('express');
+const bodyParser = require('body-parser');
+const { OAuth2Client } = require('google-auth-library');
+
+const app = express();
+app.use(bodyParser.json()); 
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+
+app.post('/api/auth/google', async (req, res) => {
+  const { id_token } = req.body;
+  try {
+    const ticket = await client.verifyIdToken({
+      idToken: id_token,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    res.json({ ok: true, user: payload });
+  } catch (err) {
+    console.error(err);
+    res.status(401).json({ ok: false, error: 'Invalid ID token' });
+  }
+});
+
+const httpPort = process.env.HTTP_PORT || 8000;
+app.listen(httpPort, () => console.log(`HTTP server running on ${httpPort}`));
