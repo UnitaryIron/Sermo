@@ -1,3 +1,4 @@
+// client.js
 (() => {
 const wsUrl =
   (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
@@ -13,6 +14,8 @@ const wsUrl =
   let typingTimeout = null;
   const TYPING_DEBOUNCE = 800;
   const notificationSound = new Audio('notification.mp3');
+
+  // DOM
   const joinBtn = document.getElementById('joinBtn');
   const usernameInput = document.getElementById('username');
   const roomInput = document.getElementById('room');
@@ -42,6 +45,7 @@ const wsUrl =
           break;
 
         case 'history':
+          // render history
           joinedRoom = data.room;
           roomNameEl.textContent = joinedRoom;
           roomInfo.hidden = false;
@@ -51,7 +55,8 @@ const wsUrl =
           chatTitle.textContent = `Room: ${joinedRoom}`;
           break;
 
-        case 'message'
+        case 'message':
+          // Play sound only for messages from others
           if (data.username !== usernameInput.value) {
             playNotificationSound();
           }
@@ -92,6 +97,7 @@ const wsUrl =
     });
   }
 
+  // UI helpers
   function renderUsers(users) {
     usersList.innerHTML = '';
     users.forEach(u => {
@@ -136,6 +142,7 @@ const wsUrl =
   }
 
   function showTypingIndicator(data) {
+    // If someone else typing, show it briefly
     if (data.clientId === clientId) return;
     typingIndicator.textContent = data.isTyping ? `${data.username} is typing…` : '';
     if (data.isTyping) {
@@ -145,7 +152,9 @@ const wsUrl =
   }
 
   function playNotificationSound() {
+    // Reset the sound to the beginning
     notificationSound.currentTime = 0;
+    // Play the sound and handle any errors
     notificationSound.play().catch(err => {
         console.log('Error playing notification:', err);
     });
@@ -183,6 +192,7 @@ const wsUrl =
       sendMessage();
       return;
     }
+    // emit typing
     if (ws && ws.readyState === WebSocket.OPEN && joinedRoom) {
       ws.send(JSON.stringify({ type: 'typing', isTyping: true }));
       clearTimeout(typingTimeout);
@@ -201,9 +211,11 @@ const wsUrl =
     }
     ws.send(JSON.stringify({ type: 'message', text }));
     messageInput.value = '';
+    // tell others we stopped typing
     ws.send(JSON.stringify({ type: 'typing', isTyping: false }));
   }
 
+  // Ensure we connect right away (optional)
   connect();
 
 })();
@@ -214,6 +226,7 @@ const overlay = document.getElementById("sidebarOverlay");
 const openBtn = document.getElementById("openSidebarBtn");
 const closeBtn = document.getElementById("closeSidebarBtn");
 
+// Initial state setup
 document.addEventListener("DOMContentLoaded", () => {
     sidebar.classList.add("open");
     openBtn.style.display = "none";
@@ -221,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function toggleSidebar(event) {
-    event.stopPropagation(); 
+    event.stopPropagation(); // Prevent event bubbling
     
     const isOpen = sidebar.classList.contains("open");
     
@@ -238,15 +251,19 @@ function toggleSidebar(event) {
     }
 }
 
+// Clear previous event listeners
 openBtn.replaceWith(openBtn.cloneNode(true));
 closeBtn.replaceWith(closeBtn.cloneNode(true));
 
+// Re-get elements after cloning
 const newOpenBtn = document.getElementById("openSidebarBtn");
 const newCloseBtn = document.getElementById("closeSidebarBtn");
 
+// Add new event listeners
 newOpenBtn.addEventListener("click", toggleSidebar);
 newCloseBtn.addEventListener("click", toggleSidebar);
 
+// Handle window resize
 window.addEventListener("resize", () => {
     if (window.innerWidth > 768) {
         sidebar.classList.add("open");
@@ -255,9 +272,12 @@ window.addEventListener("resize", () => {
         closeBtn.style.display = "block";
     }
 });
+
+// Add event delegation for sidebar buttons
 sidebar.addEventListener("click", (event) => {
     const target = event.target;
     
+    // Allow all form elements to work normally
     if (
         target.tagName === "BUTTON" || 
         target.tagName === "INPUT" || 
