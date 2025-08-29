@@ -3,114 +3,297 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Primary SEO -->
-    <title>SermoBeige - Cozy Online Group Chat Platform</title>
-    <meta name="description" content="SermoBeige is a minimalist and cozy online group chat platform. Join rooms, connect with friends, and enjoy smooth, distraction-free conversations." />
-    <meta name="keywords" content="SermoBeige, online chat, group chat, messaging app, chat rooms, real-time chat, web chat, friendly chat platform" />
-    <meta name="author" content="SermoBeige Team" />
-    <meta property="og:title" content="SermoBeige - Cozy Online Group Chat" />
-    <meta property="og:description" content="Join SermoBeige to chat in rooms with friends and communities. Minimalist, friendly, and real-time chat experience." />
+    <title>
+      SermoBeige - Free Secure Online Chat Platform | Real-time Group Messaging
+    </title>
+    <meta
+      name="title"
+      content="SermoBeige - Free Secure Online Chat Platform | Real-time Group Messaging"
+    />
+    <meta
+      name="description"
+      content="Create private chat rooms instantly with SermoBeige. Enjoy secure, real-time messaging, custom themes, and Google sign-in. No registration required. Start chatting now!"
+    />
+    <meta
+      name="keywords"
+      content="online chat, group chat, real-time messaging, private chat rooms, secure messaging, free chat platform, instant messaging"
+    />
+    <meta name="author" content="SermoBeige" />
+    <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sermo-beige.vercel.app/" />
-    <meta property="og:image" content="https://sermo-beige.vercel.app/SermoBeige.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SermoBeige - Cozy Online Group Chat" />
-    <meta name="twitter:description" content="SermoBeige is a minimalist and cozy online group chat platform. Join rooms, connect with friends, and enjoy smooth, distraction-free conversations." />
-    <meta name="twitter:image" content="https://sermo-beige.vercel.app/SermoBeige.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/SermoBeige.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "SermoBeige",
-      "url": "https://sermo-beige.vercel.app/",
-      "description": "SermoBeige is a minimalist and cozy online group chat platform. Join rooms, connect with friends, and enjoy smooth, distraction-free conversations.",
-      "applicationCategory": "SocialNetworking",
-      "operatingSystem": "Web",
-      "screenshot": "https://sermo-beige.vercel.app/SermoBeige.png"
-    }
-    </script>
-    
+    <meta property="og:url" content="http://sermo-beige.vercel.app" />
+    <meta
+      property="og:title"
+      content="SermoBeige - Free Secure Online Chat Platform"
+    />
+    <meta
+      property="og:description"
+      content="Create private chat rooms instantly. Secure, real-time messaging with custom themes. No registration needed!"
+    />
+    <meta property="og:image" content="SermoBeige.png" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="http://sermo-beige.vercel.app" />
+    <meta property="twitter:title" content="SermoBeige - Free Secure Chat" />
+    <meta
+      property="twitter:description"
+      content="Create private chat rooms instantly. Secure, real-time messaging with custom themes. No registration needed!"
+    />
+    <meta property="twitter:image" content="SermoBeige.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="SermoBeige.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="SermoBeige.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href="https://sermo-beige.vercel.app" />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+      as="style"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background: #f9fbfd;
+        color: #1d3557;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        padding: 1.5rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffffff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #1d3557;
+      }
+
+      nav a {
+        margin-left: 1.5rem;
+        text-decoration: none;
+        color: #457b9d;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      nav a:hover {
+        color: #1d3557;
+      }
+
+      .hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 4rem 1rem;
+        background: linear-gradient(160deg, #1d3557 0%, #457b9d 100%);
+        color: #fff;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        max-width: 650px;
+        font-size: 1.2rem;
+        color: #dceefc;
+        margin-bottom: 2rem;
+      }
+
+      .cta,
+      .google-btn {
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        margin: 0.5rem;
+      }
+
+      .cta {
+        background: #2a9d8f;
+        color: white;
+        font-weight: 600;
+      }
+
+      .google-btn {
+        background: white;
+        color: #333;
+        display: inline-flex;
+        align-items: center;
+        font-weight: 600;
+      }
+
+      .google-btn i {
+        color: #db4437;
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      .cta:hover,
+      .google-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        padding: 4rem 5%;
+        background: #fff;
+      }
+
+      .feature {
+        padding: 2rem;
+        border-radius: 1rem;
+        background: #f5f9fc;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-align: center;
+        border: 1px solid #e6ecf2;
+      }
+
+      .feature:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .feature i {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #2a9d8f;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1.5rem;
+        font-size: 0.9rem;
+        color: #457b9d;
+        background: #f0f4f8;
+      }
+    </style>
   </head>
-  <body class="light-theme">
-    <div id="app" class="app">
-      <aside class="sidebar" aria-label="Sidebar navigation">
-        <div class="brand" aria-label="SermoBeige Brand Logo">SermoBeige</div>
+  <body>
+    <header role="banner">
+      <div class="logo" itemscope itemtype="https://schema.org/Organization">
+        <span itemprop="name">SermoBeige</span>
+      </div>
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="#features" aria-label="View features">Features</a>
+        <a href="#join" aria-label="Join now">Join Now</a>
+      </nav>
+    </header>
 
-        <div class="theme-switcher">
-          <label for="themeSelect" class="visually-hidden">Choose Theme</label>
-          <select id="themeSelect">
-            <option value="light">Light Theme</option>
-            <option value="dark">Dark Theme</option>
-            <option value="forest">Forest Theme</option>
-            <option value="ocean">Ocean Theme</option>
-          </select>
+    <main role="main">
+      <section class="hero" id="join">
+        <h1>Chat Freely. Securely.</h1>
+        <p>
+          SermoBeige is a free, secure, minimalist online group chat platform.
+          Create private rooms, chat in real-time, and connect with friends — no
+          registration required.
+        </p>
+        <div class="cta-container">
+          <button
+            class="cta"
+            onclick="window.location.href='main.html'"
+            aria-label="Start chatting now"
+          >
+            Start Chatting
+          </button>
+          <button
+            class="google-btn"
+            onclick="window.location.href='main.html'"
+            aria-label="Sign in with Google"
+          >
+            <i class="fa-brands fa-google" aria-hidden="true"></i> Sign in with
+            Google
+          </button>
         </div>
+      </section>
 
-        <div class="user-setup">
-          <label for="username" class="visually-hidden">Your Name</label>
-          <input id="username" placeholder="Your name" maxlength="32" />
-          <label for="room" class="visually-hidden">Room Name</label>
-          <input id="room" placeholder="Room (default: main)" maxlength="64" />
-          <button id="joinBtn">Join Room</button>
+      <section id="features" class="features" aria-label="Features">
+        <article class="feature">
+          <i class="fa-solid fa-comments" aria-hidden="true"></i>
+          <h2>Real-time Messaging</h2>
+          <p>Instant, lag-free messaging in private or public rooms.</p>
+        </article>
+        <div class="feature">
+          <i class="fa-solid fa-lock"></i>
+          <h3>Private Rooms</h3>
+          <p>Securely create rooms for friends, groups, or communities.</p>
         </div>
-
-        <div class="room-info" id="roomInfo">
-          <div>Room: <span id="roomName"></span></div>
-          <div>Online Users:</div>
-          <ul id="usersList" class="users-list"></ul>
+        <div class="feature">
+          <i class="fa-brands fa-google"></i>
+          <h3>Google Sign-In</h3>
+          <p>Join instantly using your trusted Google account.</p>
         </div>
-        <footer class="footer-light">Built with ❤️ by SermoBeige</footer>
-      </aside>
+        <div class="feature">
+          <i class="fa-solid fa-paintbrush"></i>
+          <h3>Custom Themes</h3>
+          <p>Light, dark, forest, or ocean — your style, your vibe.</p>
+        </div>
+      </section>
+    </main>
 
-      <main class="chat" role="main">
-        <header class="chat-header">
-          <h1 id="chatTitle">Not connected</h1>
-          <div id="typingIndicator" class="typing" aria-live="polite"></div>
-        </header>
+    <footer role="contentinfo">
+      Built with <span aria-label="love">❤️</span> by SermoBeige
+    </footer>
 
-        <section id="messages" class="messages" aria-label="Chat messages">
-          <article class="msg in">
-            <div class="meta"><span class="user-status"></span> System</div>
-            <div class="text">
-              Welcome to SermoBeige! Join a room to start chatting.
-            </div>
-            <div class="small">Just now</div>
-          </article>
-        </section>
-
-        <footer class="composer">
-          <label for="messageInput" class="visually-hidden">Type your message</label>
-          <input
-            id="messageInput"
-            placeholder="Type a message and press Enter"
-            autocomplete="off"
-            disabled
-          />
-          <button id="sendBtn" disabled>Send</button>
-        </footer>
-      </main>
-    </div>
-
-    <audio id="notificationSound" src="notification.mp3" preload="auto"></audio>
-
-    <script src="client.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const themeSelect = document.getElementById("themeSelect");
-        const savedTheme = localStorage.getItem("sermo-beige-theme") || "light";
-        themeSelect.value = savedTheme;
-        document.body.className = `${savedTheme}-theme`;
-
-        themeSelect.addEventListener("change", function () {
-          const theme = this.value;
-          document.body.className = `${theme}-theme`;
-          localStorage.setItem("sermo-beige-theme", theme);
-        });
-      });
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SermoBeige",
+        "applicationCategory": "CommunicationApplication",
+        "description": "Free secure online group chat platform with real-time messaging and private rooms",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Real-time messaging",
+          "Private chat rooms",
+          "Google Sign-in integration",
+          "Custom themes"
+        ]
+      }
     </script>
   </body>
 </html>
