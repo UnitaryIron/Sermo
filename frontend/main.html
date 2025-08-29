@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      SermoBeige - Free Online Group Chat Platform | Real-time Messaging
+    </title>
+    <meta
+      name="title"
+      content="SermoBeige - Free Online Group Chat Platform | Real-time Messaging"
+    />
+    <meta
+      name="description"
+      content="SermoBeige is a free, secure and minimalist online group chat platform. Create private rooms, enjoy real-time messaging, and connect with friends. No registration required."
+    />
+    <meta
+      name="keywords"
+      content="online chat, group chat, real-time messaging, private chat rooms, free chat platform, instant messaging, SermoBeige"
+    />
+    <meta name="author" content="SermoBeige" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sermobeige.com/" />
+    <meta
+      property="og:title"
+      content="SermoBeige - Free Online Group Chat Platform"
+    />
+    <meta
+      property="og:description"
+      content="Create private chat rooms and enjoy real-time messaging with friends. No registration required. Join SermoBeige now!"
+    />
+    <meta property="og:image" content="https://sermobeige.com/og-image.jpg" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://sermobeige.com/" />
+    <meta
+      property="twitter:title"
+      content="SermoBeige - Free Online Group Chat"
+    />
+    <meta
+      property="twitter:description"
+      content="Create private chat rooms and enjoy real-time messaging with friends. No registration required. Join SermoBeige now!"
+    />
+    <meta
+      property="twitter:image"
+      content="https://sermobeige.com/twitter-image.jpg"
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <head>
+      <!-- Add these lines -->
+      <script
+        type="module"
+        src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/css/emoji-picker.css"
+      />
+      <!-- ...existing code... -->
+    </head>
+    <meta rel="canonical" href="https://sermobeige.com/" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="light-theme">
+    <div
+      id="app"
+      class="app"
+      itemscope
+      itemtype="https://schema.org/WebApplication"
+    >
+      <meta itemprop="name" content="SermoBeige" />
+      <meta itemprop="description" content="Free online group chat platform" />
+      <meta itemprop="applicationCategory" content="Communication" />
+
+      <aside class="sidebar" id="sidebar" aria-label="Sidebar navigation">
+        <div class="sidebar-header">
+          <div class="brand">SermoBeige</div>
+          <button id="closeSidebarBtn" class="icon-btn" title="Close Sidebar">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="theme-switcher">
+          <select id="themeSelect">
+            <option value="light">Light Theme</option>
+            <option value="dark">Dark Theme</option>
+            <option value="forest">Forest Theme</option>
+            <option value="ocean">Ocean Theme</option>
+          </select>
+        </div>
+
+        <div class="user-setup">
+          <input id="username" placeholder="Your name" maxlength="32" />
+          <input id="room" placeholder="Room (default: main)" maxlength="64" />
+          <button id="joinBtn">Join Room</button>
+        </div>
+        <aside class="sidebar" id="sidebar">...</aside>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <div class="room-info" id="roomInfo">
+          <div>Room: <span id="roomName"></span></div>
+          <div>Online Users:</div>
+          <ul id="usersList" class="users-list"></ul>
+        </div>
+        <footer class="footer-light">Built with ❤️ by SermoBeige</footer>
+      </aside>
+
+      <main class="chat" role="main">
+        <header class="chat-header">
+          <button
+            id="openSidebarBtn"
+            class="icon-btn mobile-only"
+            title="Open Menu"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <h1 id="chatTitle">Not connected</h1>
+          <div id="typingIndicator" class="typing" aria-live="polite"></div>
+        </header>
+
+        <section id="messages" class="messages" aria-label="Chat messages">
+          <article class="msg in" role="article">
+            <div class="meta">
+              <span class="user-status" aria-label="System status"></span>
+              System
+            </div>
+            <div class="text">
+              Welcome to SermoBeige! Create or join a room to start chatting
+              with friends.
+            </div>
+            <div class="small" aria-label="message timestamp">Just now</div>
+          </article>
+        </section>
+
+        <footer class="composer" role="contentinfo">
+          <input
+            id="messageInput"
+            placeholder="Type a message and press Enter"
+            autocomplete="off"
+            disabled
+          />
+          <button id="sendBtn" disabled>Send</button>
+        </footer>
+      </main>
+    </div>
+
+    <audio id="notificationSound" src="notification.mp3" preload="auto"></audio>
+    =
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SermoBeige",
+        "applicationCategory": "Communication",
+        "description": "Free online group chat platform with real-time messaging and private rooms",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Real-time messaging",
+          "Private chat rooms",
+          "No registration required",
+          "Multiple themes",
+          "Typing indicators"
+        ]
+      }
+    </script>
+
+    <script src="client.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeSelect = document.getElementById("themeSelect");
+        const savedTheme = localStorage.getItem("sermo-beige-theme") || "light";
+        themeSelect.value = savedTheme;
+        document.body.className = `${savedTheme}-theme`;
+
+        themeSelect.addEventListener("change", function () {
+          const theme = this.value;
+          document.body.className = `${theme}-theme`;
+          localStorage.setItem("sermo-beige-theme", theme);
+        });
+
+        const sidebar = document.getElementById("sidebar");
+        const closeBtn = document.getElementById("closeSidebarBtn");
+        const openBtn = document.getElementById("openSidebarBtn");
+
+        closeBtn.addEventListener("click", () => {
+          sidebar.classList.add("hidden");
+        });
+
+        openBtn.addEventListener("click", () => {
+          sidebar.classList.remove("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>
