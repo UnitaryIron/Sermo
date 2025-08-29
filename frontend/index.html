@@ -62,6 +62,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
     />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     <style>
       * {
@@ -208,6 +209,35 @@
       }
     </style>
   </head>
+  <script>
+  window.onload = () => {
+    google.accounts.id.initialize({
+      client_id: "818913886099-k1t3kj73ku66tn5p9sjgct1uvnocpr3g.apps.googleusercontent.com.apps.googleusercontent.com", 
+      callback: handleCredentialResponse
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("googleBtn"),
+      { theme: "outline", size: "large", width: 240 }
+    );
+  };
+
+  async function handleCredentialResponse(response) {
+    console.log("ID token:", response.credential);
+    const res = await fetch("/api/auth/google", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_token: response.credential })
+    });
+
+    const data = await res.json();
+    if(data.ok){
+      window.location.href = "main.html";
+    } else {
+      alert("Google login failed");
+    }
+  }
+</script>
   <body>
     <header role="banner">
       <div class="logo" itemscope itemtype="https://schema.org/Organization">
@@ -235,14 +265,7 @@
           >
             Start Chatting
           </button>
-          <button
-            class="google-btn"
-            onclick="window.location.href='main.html'"
-            aria-label="Sign in with Google"
-          >
-            <i class="fa-brands fa-google" aria-hidden="true"></i> Sign in with
-            Google
-          </button>
+         <div id="googleBtn"></div>
         </div>
       </section>
 
@@ -297,3 +320,4 @@
     </script>
   </body>
 </html>
+
